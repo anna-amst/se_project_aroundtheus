@@ -16,4 +16,4 @@ This project is implemented using HTML and CSS. The layout is designed using CSS
 
 ## GitHub Pages
 
-Check out the live version of the project on GitHub Pages: [Around The U.S.](https://yourusername.github.io/around-the-us/)
+Check out the live version of the project on GitHub Pages: [Around The U.S.](https://anna-amst.github.io/se_project_aroundtheus/)
