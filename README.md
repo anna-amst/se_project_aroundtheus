@@ -1,21 +1,19 @@
 # Project 3: Around The U.S.
 
-### Overview  
+## Description
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+Around The U.S. is an interactive web page allowing users to share photos of their travel experiences across the United States. Users can upload photos, like photos from other users, and manage their profiles.
+
+## Functionality
+
+- **Photo Sharing:** Users can upload photos of their travels, which are displayed on the web page.
+- **Photo Interaction:** Users can like photos posted by other users to show appreciation for their travels.
+- **Profile Management:** Users can customize their profiles by adding a profile picture and updating their bio.
+
+## Technologies and Techniques Used
+
+This project is implemented using HTML and CSS. The layout is designed using CSS Grid and Flexbox, ensuring a responsive design across different devices and screen sizes.
+
+## GitHub Pages
+
+Check out the live version of the project on GitHub Pages: [Around The U.S.](https://yourusername.github.io/around-the-us/)
