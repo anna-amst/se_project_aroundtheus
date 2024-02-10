@@ -14,6 +14,11 @@ Around The U.S. is an interactive web page allowing users to share photos of the
 
 This project is implemented using HTML and CSS. The layout is designed using CSS Grid and Flexbox, ensuring a responsive design across different devices and screen sizes.
 
+## Project overview 
+
+Check out the video overview of the project: [Project Overview](https://drive.google.com/file/d/1bysuYgVkhkAoMXMp9untgE7AuvLp5Ksb/view?usp=sharing)
+
+
 ## GitHub Pages
 
 Check out the live version of the project on GitHub Pages: [Around The U.S.](https://anna-amst.github.io/se_project_aroundtheus/)
