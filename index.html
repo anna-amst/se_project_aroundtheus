@@ -32,7 +32,7 @@
         </section>
         <section class="cards page__section">
           <ul class="cards__list">
-            <li class="card">
+            <!-- <li class="card">
               <img
                 src="images/card-images/yosemite.jpg"
                 alt="Yosemite Valley Photo"
@@ -97,7 +97,7 @@
                 <h2 class="card__title">Lago di Braise</h2>
                 <button type="button" class="card__like-button"></button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
@@ -109,13 +109,32 @@
       <div class="modal__container">
         <button class="modal__close-button" type="button"></button>
         <h2 class="modal__heading">Edit profile</h2>
-        <form class="modal__form">
-          <input type="text" name="name" placeholder="Jacques Cousteau" />
-          <input type="text" name="description" placeholder="Explorer" />
+        <form action="https://google.com/search" class="modal__form">
+          <input
+            class="modal__input modal__input-title"
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
+          <input
+            class="modal__input modal__input-subtitle"
+            type="text"
+            name="description"
+            placeholder="Description"
+          />
+          <button class="modal__button" type="submit">Save</button>
         </form>
-        <button class="modal__button" type="button">Save</button>
       </div>
     </div>
+    <template id="card-template">
+      <li class="card">
+        <img src="" alt="" class="card__image" />
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button type="button" class="card__like-button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
