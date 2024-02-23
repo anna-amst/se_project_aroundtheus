@@ -56,7 +56,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  padding-bottom: 48px;
+  padding-bottom: 0;
   max-width: 358px;
 }
 
@@ -106,7 +106,7 @@
   }
 
   .modal__form {
-    padding-bottom: 45px;
+    padding-bottom: 0;
     max-width: 238px;
   }
 

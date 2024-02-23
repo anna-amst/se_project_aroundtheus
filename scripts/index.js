@@ -26,18 +26,25 @@ const initialCards = [
 ];
 
 const editButton = document.querySelector(".profile__edit-button");
-const editModal = document.querySelector(".modal");
+const editProfileModal = document.querySelector("#edit-modal");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const inputTitle = document.querySelector(".modal__input-title");
 const inputSubtitle = document.querySelector(".modal__input-subtitle");
 const closeButton = document.querySelector(".modal__close-button");
-const profileEditForm = editModal.querySelector(".modal__container");
+const profileEditForm = editProfileModal.querySelector(".modal__container");
 const cardList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template").content;
+const addButton = document.querySelector(".profile__add-button");
+const addCardModal = document.querySelector("#modal-add-card");
+const closeAddFormButton = addCardModal.querySelector(".modal__close-button");
+
+function openModal() {
+  editProfileModal.classList.add("modal_opened");
+}
 
 function closeModal() {
-  editModal.classList.remove("modal_opened");
+  editProfileModal.classList.remove("modal_opened");
 }
 
 function handleProfileFormSubmit(evt) {
@@ -60,14 +67,20 @@ function getCardElement(cardData) {
 editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
   inputSubtitle.value = profileSubtitle.textContent;
-  editModal.classList.add("modal_opened");
+  editProfileModal.classList.add("modal_opened");
 });
-
 closeButton.addEventListener("click", () => {
   closeModal();
 });
-
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
+//add new card button
+addButton.addEventListener("click", () => {
+  addCardModal.classList.add("modal_opened");
+});
+
+closeAddFormButton.addEventListener("click", () => {
+  addCardModal.classList.remove("modal_opened");
+});
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
