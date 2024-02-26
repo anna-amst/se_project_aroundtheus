@@ -28,6 +28,35 @@
   width: 100%;
 }
 
+.modal__container_type_preview {
+  max-width: 75vw;
+  max-height: 75vh;
+  background-position: center;
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+
+.modal__preview-image {
+  object-fit: cover;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.modal__image-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  padding-top: 10px;
+}
+
 .modal__close-button {
   background: transparent url("../images/close-button.svg") no-repeat;
   background-size: contain;
@@ -93,6 +122,10 @@
     position: relative;
     max-width: 282px;
     width: 100%;
+  }
+
+  .modal__container_type_preview {
+    padding: 0;
   }
 
   .modal__close-button {
