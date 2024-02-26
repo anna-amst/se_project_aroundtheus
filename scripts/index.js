@@ -62,10 +62,11 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardName.value;
   const link = cardLink.value;
-  renderCard({name, link});
+  renderCard({ name, link });
   closeModal(addCardModal);
   addCardForm.reset();
 }
+
 
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
@@ -73,7 +74,11 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImageElement = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__title");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
 
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   cardTitleElement.textContent = cardData.name;
   cardImageElement.src = cardData.link;
   cardImageElement.alt = cardData.name;
@@ -116,7 +121,6 @@ likeButtons.forEach((likeButton) => {
     likeButton.classList.toggle("card__like-button_type_active");
   });
 });
-
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
