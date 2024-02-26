@@ -82,6 +82,7 @@
   border-radius: 2px;
   border: none;
   cursor: pointer;
+  margin-top: 18px;
 }
 
 @media screen and (max-width: 660px) {
@@ -112,5 +113,6 @@
 
   .modal__button {
     max-width: 238px;
+    margin-top: 15px;
   }
 }

@@ -43,6 +43,10 @@
   border: none;
 }
 
+.card__like-button_type_active {
+  background-image: url(../images/filled-like-button.svg);
+}
+
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
