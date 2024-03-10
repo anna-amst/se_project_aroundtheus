@@ -56,10 +56,28 @@ const previewImageElementName = previewImageModal.querySelector(
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("click", clickOutsideHandler);
+  document.addEventListener("keyup", escapeKeyHandler);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("click", clickOutsideHandler);
+  document.removeEventListener("keyup", escapeKeyHandler);
+}
+
+function clickOutsideHandler(evt) {
+  const modal = document.querySelector(".modal_opened");
+  if (evt.target === modal) {
+    closeModal(modal);
+  }
+}
+
+function escapeKeyHandler(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
+  }
 }
 
 function handleProfileFormSubmit(evt) {
