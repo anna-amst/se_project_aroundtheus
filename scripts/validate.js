@@ -8,7 +8,7 @@ function showInputError(formElement, inputElement, {inputErrorClass, errorClass}
 function hideInputError(formElement, inputElement, {inputErrorClass, errorClass} ) {
   const errorMessageEl = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
-  errorMessageEl.textContent = " ";
+  errorMessageEl.textContent = "";
   errorMessageEl.classList.remove(errorClass);
 
 }
@@ -46,7 +46,7 @@ function toggleButtonState(inputList, submitButton, {inactiveButtonClass}) {
 
 function setEventListeners(formElement, options) {
   const inputList = [...formElement.querySelectorAll(options.inputSelector)];
-  const submitButton = formElement.querySelector(".modal__button");
+  const submitButton = formElement.querySelector(options.submitButtonSelector);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, options, inputElement);
