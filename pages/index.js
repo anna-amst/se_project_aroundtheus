@@ -1,5 +1,5 @@
 import Card from "../components/Card.js";
-// import FormValidator from "../components/FormValidator.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -32,7 +32,7 @@ const cardData = {
   link: "https://images.unsplash.com/photo-1587141105209-2a7ee89bce02?q=80&w=2987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 };
 
-// image
+// handle image preview
 
 const handleImageClick = (cardData)=> {
   console.log(cardData);
@@ -42,12 +42,23 @@ const handleImageClick = (cardData)=> {
   openModal(previewImageModal);
 }
 
-//const editFormValidator = new FormValidator("#edit-modal");
-//editFormValidator.enableValidation();
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
-//const addFormValidator = new FormValidator("#modal-add-card");
-//addFormValidator.enableValidation();
+// get all form elements
+const forms = document.querySelectorAll(config.form);
 
+// initialize FormValidator for each form
+forms.forEach((form) => {
+  const formValidator = new FormValidator(validationConfig, form);
+  formValidator.enableValidation();
+});
 
 const editButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-modal");
@@ -120,33 +131,6 @@ function handleAddCardFormSubmit(evt) {
   addCardForm.reset();
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardImageElement = cardElement.querySelector(".card__image");
-  const cardTitleElement = cardElement.querySelector(".card__title");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  const likeButton = cardElement.querySelector(".card__like-button");
-
-  cardImageElement.addEventListener("click", () => {
-    previewImageElement.src = cardData.link;
-    previewImageElement.alt = cardData.name;
-    previewImageElementName.textContent = cardData.name;
-    openModal(previewImageModal);
-  });
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-  cardTitleElement.textContent = cardData.name;
-  cardImageElement.src = cardData.link;
-  cardImageElement.alt = cardData.name;
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_type_active");
-  });
-  return cardElement;
-}
-
 // Form listeners
 editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
@@ -190,3 +174,11 @@ function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardList.prepend(cardElement);
 }
+
+
+// enable form validation
+const editFormValidator = new FormValidator(config, editProfileModal);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(config, addCardModal);
+addFormValidator.enableValidation();
