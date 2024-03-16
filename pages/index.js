@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+// import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Zion Park",
@@ -24,6 +27,27 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1455156218388-5e61b526818b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+const cardData = {
+  name: "Zion Park",
+  link: "https://images.unsplash.com/photo-1587141105209-2a7ee89bce02?q=80&w=2987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+};
+
+// image
+
+const handleImageClick = (cardData)=> {
+  console.log(cardData);
+  previewImageElement.src = cardData._link;
+  previewImageElement.alt = cardData._name;
+  previewImageElementName.textContent = cardData._name;
+  openModal(previewImageModal);
+}
+
+//const editFormValidator = new FormValidator("#edit-modal");
+//editFormValidator.enableValidation();
+
+//const addFormValidator = new FormValidator("#modal-add-card");
+//addFormValidator.enableValidation();
+
 
 const editButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-modal");
@@ -150,8 +174,15 @@ closeAddFormButton.addEventListener("click", () => {
   closeModal(addCardModal);
 });
 
+
+// create card
+const createCard = (cardData) =>{
+  const card = new Card(cardData, "#card-template", handleImageClick)
+  return card.generateCard();
+}
+
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
+  const cardElement = createCard(cardData);
   cardList.append(cardElement);
 });
 
