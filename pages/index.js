@@ -34,13 +34,13 @@ const cardData = {
 
 // handle image preview
 
-const handleImageClick = (cardData)=> {
+const handleImageClick = (cardData) => {
   console.log(cardData);
-  previewImageElement.src = cardData._link;
-  previewImageElement.alt = cardData._name;
-  previewImageElementName.textContent = cardData._name;
+  previewImageElement.src = cardData.link;
+  previewImageElement.alt = cardData.name;
+  previewImageElementName.textContent = cardData.name;
   openModal(previewImageModal);
-}
+};
 
 const config = {
   formSelector: ".modal__form",
@@ -102,9 +102,8 @@ function closeModal(modal) {
 }
 
 function clickOutsideHandler(evt) {
-  const modal = document.querySelector(".modal_opened");
-  if (evt.target === modal) {
-    closeModal(modal);
+  if (evt.target.classList.contains("modal_opened")) {
+    closeModal(evt.target);
   }
 }
 
@@ -158,12 +157,11 @@ closeAddFormButton.addEventListener("click", () => {
   closeModal(addCardModal);
 });
 
-
 // create card
-const createCard = (cardData) =>{
-  const card = new Card(cardData, "#card-template", handleImageClick)
+const createCard = (cardData) => {
+  const card = new Card(cardData, "#card-template", handleImageClick);
   return card.generateCard();
-}
+};
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
@@ -171,15 +169,7 @@ initialCards.forEach((cardData) => {
 });
 
 function renderCard(cardData) {
-  const card = new Card (cardData, "#card-template", handleImageClick);
+  const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.generateCard();
   cardList.prepend(cardElement);
 }
-
-
-// enable form validation
-const editFormValidator = new FormValidator(config, editProfileModal);
-editFormValidator.enableValidation();
-
-const addFormValidator = new FormValidator(config, addCardModal);
-addFormValidator.enableValidation();
