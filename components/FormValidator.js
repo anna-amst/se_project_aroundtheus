@@ -63,7 +63,7 @@ export default class FormValidator {
   }
 
   _isFormValid() {
-    return this._form.checkValidity();
+    return this._form.checkValidity;
   }
 
   _setEventListeners() {
