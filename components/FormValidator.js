@@ -39,23 +39,24 @@ export default class FormValidator {
     this._submitButton.disabled = false;
   }
 
-  _disableButton() {
+  disableButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
 
   _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-      this._disableButton();
+      this.disableButton();
     } else {
       this._enableButton();
     }
   }
 
   _clearFormFields() {
-    inputElements.forEach((inputElement) => {
-      this._form.reset();
+    this._inputList.forEach((inputElement) => {
+      inputElement.value = ''; // Clear input field values
     });
+    this._form.reset();
   }
 
   _isFormValid() {
@@ -77,20 +78,25 @@ export default class FormValidator {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       if (this._isFormValid()) {
-        this._disableButton();
+        this.disableButton();
         this._clearFormFields();
       }
     });
-    
+
     this._setEventListeners();
+
+    const isEmpty = this._inputList.some(input => !input.value); // Check if any input value is an empty string
+    if (isEmpty) {
+      this.disableButton(); // Disable the submit button if any input fields are empty
+    }
   }
+
 
   resetValidation() {
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-    this._disableButton();
+    this.disableButton();
   }
 }
-
 

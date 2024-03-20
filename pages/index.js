@@ -52,11 +52,11 @@ const config = {
 };
 
 // get all form elements
-const forms = document.querySelectorAll(config.form);
+const forms = document.querySelectorAll(config.formSelector);
 
 // initialize FormValidator for each form
 forms.forEach((form) => {
-  const formValidator = new FormValidator(validationConfig, form);
+  const formValidator = new FormValidator(config, form);
   formValidator.enableValidation();
 });
 
@@ -135,6 +135,7 @@ editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
   inputSubtitle.value = profileSubtitle.textContent;
   openModal(editProfileModal);
+  addCardForm.disableButton();
 });
 profileCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
