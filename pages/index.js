@@ -60,6 +60,7 @@ forms.forEach((form) => {
   formValidator.enableValidation();
 });
 
+
 const editButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-modal");
 const profileTitle = document.querySelector(".profile__title");
@@ -87,6 +88,8 @@ const previewImageElementName = previewImageModal.querySelector(
   ".modal__image-title"
 );
 
+const editFormValidator = new FormValidator(config, editProfileModal);
+editFormValidator.enableValidation();
 // Functions
 
 function openModal(modal) {
@@ -135,7 +138,9 @@ editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
   inputSubtitle.value = profileSubtitle.textContent;
   openModal(editProfileModal);
-  addCardForm.disableButton();
+  editFormValidator.toggleButtonState();
+  // addCardForm.disableButton();
+  // editProfileValidator.toggleButtonState <----
 });
 profileCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
@@ -170,7 +175,10 @@ initialCards.forEach((cardData) => {
 });
 
 function renderCard(cardData) {
+  console.log(2);
+  console.log(cardData)
   const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.generateCard();
   cardList.prepend(cardElement);
 }
+
