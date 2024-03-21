@@ -53,15 +53,9 @@ export default class FormValidator {
   }
 
   _clearFormFields() {
-    this._inputList.forEach((inputElement) => {
-      inputElement.value = ''; // Clear input field values
-    });
     this._form.reset();
   }
 
-  _isFormValid() {
-    return this._form.checkValidity;
-  }
 
   _setEventListeners() {
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
@@ -77,18 +71,12 @@ export default class FormValidator {
   enableValidation() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      if (this._isFormValid()) {
         this.disableButton();
-        //this._clearFormFields();
-      }
     });
 
     this._setEventListeners();
+    this.toggleButtonState();
 
-    const isEmpty = this._inputList.some(input => !input.value); // Check if any input value is an empty string
-    if (isEmpty) {
-      this.disableButton(); // Disable the submit button if any input fields are empty
-    }
   }
 
 

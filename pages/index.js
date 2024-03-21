@@ -88,8 +88,6 @@ const previewImageElementName = previewImageModal.querySelector(
   ".modal__image-title"
 );
 
-const editFormValidator = new FormValidator(config, editProfileModal);
-editFormValidator.enableValidation();
 // Functions
 
 function openModal(modal) {
@@ -138,7 +136,6 @@ editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
   inputSubtitle.value = profileSubtitle.textContent;
   openModal(editProfileModal);
-  editFormValidator.toggleButtonState();
   // addCardForm.disableButton();
   // editProfileValidator.toggleButtonState <----
 });
@@ -177,7 +174,7 @@ initialCards.forEach((cardData) => {
 function renderCard(cardData) {
   console.log(2);
   console.log(cardData)
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = createCard(cardData);
   const cardElement = card.generateCard();
   cardList.prepend(cardElement);
 }
