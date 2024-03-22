@@ -88,6 +88,7 @@ const previewImageElementName = previewImageModal.querySelector(
   ".modal__image-title"
 );
 
+
 // Functions
 
 function openModal(modal) {
@@ -175,7 +176,6 @@ function renderCard(cardData) {
   console.log(2);
   console.log(cardData)
   const card = createCard(cardData);
-  const cardElement = card.generateCard();
-  cardList.prepend(cardElement);
+  cardList.prepend(card);
 }
 
